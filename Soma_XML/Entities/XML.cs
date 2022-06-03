@@ -21,52 +21,60 @@ namespace Soma_XML.Entities
 
         public static void Ler_Arquivos(DataGridView gridXMLS, MaterialLabel total)
         {
-            double valor = 0;
-            string[] files;
-            using (var fbd = new FolderBrowserDialog())
+            try
             {
-                DialogResult result = fbd.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                double valor = 0;
+                string[] files;
+                using (var fbd = new FolderBrowserDialog())
                 {
-                    files = Directory.GetFiles(fbd.SelectedPath);
-                    foreach (var item in files)
+                    DialogResult result = fbd.ShowDialog();
+
+                    if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                     {
-                        string paths = Path.GetFileName(item);
-
-                        if (paths.Contains("-PROCNFE.xml") || paths.Contains("-procnfe.xml") || paths.Contains("-procNFe.xml"))
+                        files = Directory.GetFiles(fbd.SelectedPath);
+                        foreach (var item in files)
                         {
-                            XmlDocument xml = new XmlDocument();
-                            xml.Load(item);
-                            XmlNodeList vNF = xml.GetElementsByTagName("vNF");
-                            XmlNodeList Emissao = xml.GetElementsByTagName("dhEmi");
-                            XmlNodeList Nota = xml.GetElementsByTagName("nNF");
-                            XmlNodeList Serie = xml.GetElementsByTagName("serie");
-                            XmlNodeList Finalidade = xml.GetElementsByTagName("finNFe");
-                            XmlNodeList tpNF = xml.GetElementsByTagName("tpNF");
+                            string paths = Path.GetFileName(item);
 
-                            DataGridViewRow row = (DataGridViewRow)gridXMLS.Rows[0].Clone();
-                            row.Cells[0].Value = Emissao[0].InnerText;
-                            row.Cells[1].Value = Nota[0].InnerText;
-                            row.Cells[2].Value = Serie[0].InnerText;
-                            row.Cells[3].Value = vNF[0].InnerText;
-                            gridXMLS.Rows.Add(row);
-                            
-
-                            double vr = double.Parse(vNF[0].InnerText, System.Globalization.CultureInfo.InvariantCulture);
-                            if (Finalidade[0].InnerText == "4" && tpNF[0].InnerText == "1")
+                            if (paths.Contains("-PROCNFE.xml") || paths.Contains("-procnfe.xml") || paths.Contains("-procNFe.xml"))
                             {
-                                valor -= vr;
-                            }
-                            else {
-                                valor += vr;
-                            }
-                            
+                                XmlDocument xml = new XmlDocument();
+                                xml.Load(item);
+                                XmlNodeList vNF = xml.GetElementsByTagName("vNF");
+                                XmlNodeList Emissao = xml.GetElementsByTagName("dhEmi");
+                                XmlNodeList Nota = xml.GetElementsByTagName("nNF");
+                                XmlNodeList Serie = xml.GetElementsByTagName("serie");
+                                XmlNodeList Finalidade = xml.GetElementsByTagName("finNFe");
+                                XmlNodeList tpNF = xml.GetElementsByTagName("tpNF");
 
+                                DataGridViewRow row = (DataGridViewRow)gridXMLS.Rows[0].Clone();
+                                row.Cells[0].Value = Emissao[0].InnerText;
+                                row.Cells[1].Value = Nota[0].InnerText;
+                                row.Cells[2].Value = Serie[0].InnerText;
+                                row.Cells[3].Value = vNF[0].InnerText;
+                                gridXMLS.Rows.Add(row);
+
+
+                                double vr = double.Parse(vNF[0].InnerText, System.Globalization.CultureInfo.InvariantCulture);
+                                if (Finalidade[0].InnerText == "4" && tpNF[0].InnerText == "1")
+                                {
+                                    valor -= vr;
+                                }
+                                else
+                                {
+                                    valor += vr;
+                                }
+
+
+                            }
+                            total.Text = valor.ToString();
                         }
-                        total.Text = valor.ToString();
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
     }

@@ -70,7 +70,7 @@
             this.gridXMLS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.gridXMLS.RowHeadersVisible = false;
             this.gridXMLS.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.gridXMLS.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridXMLS.RowTemplate.DividerHeight = 1;
             this.gridXMLS.RowTemplate.Height = 25;
@@ -156,7 +156,7 @@
             this.Name = "Form1";
             this.Sizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "XEMELE";
+            this.Text = "Somar valor XMLs";
             ((System.ComponentModel.ISupportInitialize)(this.gridXMLS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
