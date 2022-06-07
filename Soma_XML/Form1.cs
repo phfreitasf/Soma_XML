@@ -24,15 +24,15 @@ namespace Soma_XML
             materialSkinManager.ColorScheme = new ColorScheme(Primary.DeepPurple600, Primary.DeepPurple600, Primary.Blue500, Accent.LightBlue200, TextShade.WHITE);
             materialRaisedButton1.BackColor = Color.Purple;
             labelMoeda.ForeColor = Color.Red;
-            labelRS.ForeColor = Color.Red;
+            
             gridXMLS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridXMLS.AutoResizeColumns();
-            gridXMLS.BackgroundColor = Color.RebeccaPurple;
+            gridXMLS.BackgroundColor = Color.White;
         }
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            XML.Ler_Arquivos(gridXMLS, labelRS);
+            XML.Ler_Arquivos(gridXMLS, lblValor);
         }
     }
 }
