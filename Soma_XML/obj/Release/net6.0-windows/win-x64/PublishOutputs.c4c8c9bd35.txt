@@ -1,6 +1,0 @@
-C:\Users\Autocom3\Desktop\teste\Soma_XML.exe
-C:\Users\Autocom3\Desktop\teste\Soma_XML.dll
-C:\Users\Autocom3\Desktop\teste\Soma_XML.deps.json
-C:\Users\Autocom3\Desktop\teste\Soma_XML.runtimeconfig.json
-C:\Users\Autocom3\Desktop\teste\Soma_XML.pdb
-C:\Users\Autocom3\Desktop\teste\MaterialSkin.dll
