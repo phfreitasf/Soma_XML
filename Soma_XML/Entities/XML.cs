@@ -18,6 +18,7 @@ namespace Soma_XML.Entities
         {
             try
             {
+                total.Text = "0.00";
                 gridXMLS.Rows.Clear();
                 gridXMLS.DataSource = null;
                 double valor = 0;
